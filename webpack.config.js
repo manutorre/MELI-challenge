@@ -11,6 +11,11 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true
+  },  
   module: {
     rules: [
       {
@@ -34,7 +39,13 @@ module.exports = {
           // Creates `style` nodes from JS strings
           "style-loader",
           // Translates CSS into CommonJS
-          "css-loader",
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          },
           // Compiles Sass to CSS
           "sass-loader",
         ],

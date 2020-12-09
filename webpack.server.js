@@ -1,6 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 
@@ -22,19 +22,30 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.scss$/,
+        test: /\.scss$/i,
         use: [
-          'isomorphic-style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
+              importLoaders: 1,
+              modules: true
             }
           },
-          'postcss-loader'
-        ]
-      }      
+          'postcss-loader',
+          'sass-loader',
+        ],
+      }
     ]
   },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].css'
+    }),
+  ]
 
 };

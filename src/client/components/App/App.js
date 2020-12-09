@@ -3,12 +3,12 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import Results from '../Results/Results'
 import Detail from '../Detail/Detail'
 import Home from '../Home/Home'
-import './App.scss'
+import style from './App.scss'
 
 const App = () => {
   const [show, toggle] = useState(true)
   return (
-    <div className="container">
+    <div className={style.container}>
       <button onClick={() => toggle(!show)}>toggle</button>
       {show && <h1> Hola Mundo! </h1>}
       <ul>

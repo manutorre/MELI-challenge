@@ -6,9 +6,9 @@ import path from 'path';
 import { StaticRouter } from 'react-router-dom';
 
 const app = express();
-
+//get assets for JS hydate and CSS
 app.use('/static', express.static('dist'))
-app.use(express.static(path.join('server-build', 'assets', 'css')))
+app.use('/static', express.static(path.join('server-build', 'css')))
 app.get('*', (req, res) => {
 
      const html = 
@@ -17,6 +17,7 @@ app.get('*', (req, res) => {
               <meta charSet="UTF-8"/>
               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
               <title>React</title>
+              <link rel="stylesheet" href="./static/main.css"/>
           </head>            
           <body>
               <div id="app">

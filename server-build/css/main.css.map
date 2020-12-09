@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/client/components/Detail/Detail.scss","webpack:///./src/client/components/App/App.scss"],"names":[],"mappings":"AAAA;EACI;AACJ,C;ACAA;EACI,yBAHG;AAEP,C","file":"css/main.css","sourcesContent":[".container {\r\n    background-color: red;\r\n}","$blue: #c6538c;\r\n\r\n.container {\r\n    background-color:$blue;\r\n}"],"sourceRoot":""}
