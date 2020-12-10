@@ -14,7 +14,6 @@ module.exports = {
     path: path.resolve('server-build'),
     filename: 'index.js'
   },
-
   module: {
     rules: [
       {
@@ -35,10 +34,17 @@ module.exports = {
           'postcss-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       }
     ]
   },
-
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

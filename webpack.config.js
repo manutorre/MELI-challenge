@@ -9,7 +9,7 @@ module.exports = {
   },
   devtool:'source-map',
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [ '.tsx', '.ts', '.js' ],
   },
   devServer: {
     historyApiFallback: true,
@@ -50,6 +50,11 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      }      
     ],
   },
   plugins: [

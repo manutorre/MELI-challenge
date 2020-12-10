@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Detail.scss'
 
-const Detail = () => {
+const Detail = ( props: { detalle: string}) => {
     return(
         <div className={styles.container}>
             <h1>
-                Detail example title
+                {props.detalle}
             </h1>
             <p>
                 this is an example paragraph
