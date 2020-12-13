@@ -1,5 +1,3 @@
 /// <reference types="react" />
-declare const Detail: (props: {
-    detalle: string;
-}) => JSX.Element;
+declare const Detail: (props: any) => JSX.Element;
 export default Detail;

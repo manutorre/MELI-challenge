@@ -8,17 +8,17 @@ import style from './App.scss'
 //import axios from 'axios';
 
 const App = (props:any) => {
-  const [results] = useState(props.fetchResult.results)
+  const [apiData] = useState(props.apiResponse) //from now on, the data is managed on the react code
   return (
     <div className={style.container}>
       <SearchBar/>
       <div className={style.routeContainer}>
-        <Switch>
+        <Switch>  
           <Route exact path="/" component={() => <div></div>}/> 
-          <Route exact path="/items" component={() => <Results items={results}/>} />
-          <Route exact path="/items/:id" component={() => <Detail detalle={'Manu'}/>} />
+          <Route exact path="/items" component={() => <Results items={apiData}/>} />
+          <Route exact path="/items/:id" component={() => <Detail detail={apiData}/>} />
           <Route component={() => <div>Not found</div>} />
-        </Switch>            
+        </Switch>
       </div>
     </div>
   )

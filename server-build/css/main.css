@@ -18,11 +18,19 @@
   vertical-align: top;
   margin-top: 48px;
 }
+._2dpT0IO6tx6PGZDNuSK4b_ h1 {
+  font-size: 24px;
+  font-weight: lighter;
+}
+._2dpT0IO6tx6PGZDNuSK4b_ h2 {
+  font-size: 18;
+  font-weight: lighter;
+}
 
 .V-MhpvXjUhk7HrwB9oHMA {
   vertical-align: top;
   display: inline-block;
-  margin: 135px 120px 0 0;
+  margin: 105px 120px 0 0;
   float: right;
 }
 .gvS43wKyiI5J3KqLX8nXI {
@@ -33,7 +41,26 @@
   margin: 0 auto;
 }
 ._1pde6mqdRez3K8ONdmmK2R {
-  background-color: red;
+  width: 80%;
+  background-color: white;
+  margin: 0 auto;
+  padding: 32px 0 0 32px;
+}
+
+._1QeLM4LLT9iP_Cgdk9lVSy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+}
+._1QeLM4LLT9iP_Cgdk9lVSy ._1GxVz_yJ1zDWvpKg-vmKJd {
+  font-size: 14px;
+}
+._1QeLM4LLT9iP_Cgdk9lVSy h2 {
+  font-size: 24px;
+}
+._1QeLM4LLT9iP_Cgdk9lVSy h1 {
+  font-size: 46px;
 }
 ._2l-vrF9te8WePkvFkv-jGN {
   background-color: #FFE600;
@@ -72,6 +99,9 @@
 body {
   margin: 0px;
   background-color: #EEEEEE;
+  font-family: -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 100;
 }
 
 ._1y-EmQ4FZAwnJSeb3pGNky {

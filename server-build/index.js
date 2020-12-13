@@ -126,14 +126,14 @@ __webpack_require__.r(__webpack_exports__);
 
 //import axios from 'axios';
 var App = function (props) {
-    var results = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.fetchResult.results)[0];
+    var apiData = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.apiResponse)[0]; //from now on, the data is managed on the react code
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _App_scss__WEBPACK_IMPORTED_MODULE_5__["default"].container },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_4__["default"], null),
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _App_scss__WEBPACK_IMPORTED_MODULE_5__["default"].routeContainer },
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null); } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Results_Results__WEBPACK_IMPORTED_MODULE_2__["default"], { items: results }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items/:id", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Detail_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], { detalle: 'Manu' }); } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Results_Results__WEBPACK_IMPORTED_MODULE_2__["default"], { items: apiData }); } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items/:id", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Detail_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], { detail: apiData }); } }),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Not found"); } })))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -151,7 +151,7 @@ var App = function (props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["default"] = ({"container":"_1pde6mqdRez3K8ONdmmK2R"});
+/* harmony default export */ __webpack_exports__["default"] = ({"container":"_1pde6mqdRez3K8ONdmmK2R","info":"_1QeLM4LLT9iP_Cgdk9lVSy","detailInfo":"_1GxVz_yJ1zDWvpKg-vmKJd"});
 
 /***/ }),
 
@@ -170,9 +170,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Detail = function (props) {
+    var detail = props.detail;
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.detalle),
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "this is an example paragraph")));
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Info, { detail: detail }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].description },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Descripci\u00F3n del producto"),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail.description))));
+};
+var Info = function (props) {
+    var detail = props.detail;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].info },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", { src: detail.picture }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null,
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].detailInfo },
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, detail.condition === 'new' ? 'nuevo' : 'usado'),
+                " - ",
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null,
+                    detail.sold_quantity,
+                    " vendidos")),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, detail.title),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null,
+                "$ ",
+                detail.price.amount),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Comprar"))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Detail);
 
@@ -505,7 +525,7 @@ app.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default.a["static"](path
 app.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default.a["static"](path__WEBPACK_IMPORTED_MODULE_4___default.a.join('server-build', 'css')));
 Object(_api__WEBPACK_IMPORTED_MODULE_8__["default"])(app);
 
-var html = function html(req, result) {
+var html = function html(req, apiResponse) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("html", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("head", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("meta", {
     charSet: "UTF-8"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("meta", {
@@ -519,10 +539,10 @@ var html = function html(req, result) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["StaticRouter"], {
     location: req.url
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_client_components_App_App__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    fetchResult: result
+    apiResponse: apiResponse
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("script", {
     dangerouslySetInnerHTML: {
-      __html: "window.__data__ = ".concat(JSON.stringify(result), ";")
+      __html: "window.__data__ = ".concat(JSON.stringify(apiResponse), ";")
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("script", {
     src: "/static/bundle.js"
@@ -531,7 +551,7 @@ var html = function html(req, result) {
 
 app.get('/items', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-    var response, result;
+    var response, responseData;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -541,8 +561,8 @@ app.get('/items', /*#__PURE__*/function () {
 
           case 2:
             response = _context.sent;
-            result = response.data;
-            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, result)));
+            responseData = response.data;
+            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, responseData.results)));
 
           case 5:
           case "end":
@@ -558,7 +578,7 @@ app.get('/items', /*#__PURE__*/function () {
 }());
 app.get('/items/:id', /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
-    var response, result;
+    var response, responseData;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -568,8 +588,8 @@ app.get('/items/:id', /*#__PURE__*/function () {
 
           case 2:
             response = _context2.sent;
-            result = response.data;
-            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, result)));
+            responseData = response.data;
+            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, responseData.item)));
 
           case 5:
           case "end":
@@ -582,7 +602,8 @@ app.get('/items/:id', /*#__PURE__*/function () {
   return function (_x3, _x4) {
     return _ref2.apply(this, arguments);
   };
-}());
+}()); //other routes handled by react-router staticRouter
+
 app.get('*', /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
     return regeneratorRuntime.wrap(function _callee3$(_context3) {

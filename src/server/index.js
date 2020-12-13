@@ -19,7 +19,7 @@ app.use('/static', express.static(path.join('server-build', 'css')))
 
 api(app);
 
-const html = (req, result) => 
+const html = (req, apiResponse) => 
       <html>
           <head>
               <meta charSet="UTF-8"/>
@@ -30,12 +30,12 @@ const html = (req, result) =>
           <body>
               <div id="app">
                 <StaticRouter location={req.url}>
-                    <App fetchResult={result}/>
+                    <App apiResponse={apiResponse}/>
                 </StaticRouter>              
               </div>
               {/* Inject server side fetched data inti client side __data__ window object. This is used in src/index.js as props for App component*/}
               <script dangerouslySetInnerHTML={{
-                  __html: `window.__data__ = ${JSON.stringify(result)};`
+                  __html: `window.__data__ = ${JSON.stringify(apiResponse)};`
               }}/>
               <script src="/static/bundle.js"></script>
           </body>
@@ -43,18 +43,18 @@ const html = (req, result) =>
 
 app.get('/items', async (req, res) => {
     const response = await axios('http://localhost:3000/api/items?q=' + req.query.search);
-    const result = response.data;    
-    res.send(ReactDOM.renderToString(html(req, result)));
+    const responseData = response.data;
+    res.send(ReactDOM.renderToString(html(req, responseData.results)));
 })
 
 
 app.get('/items/:id', async (req, res) => {
     const response = await axios('http://localhost:3000/api/items/' + req.params.id);
-    const result = response.data;    
-    res.send(ReactDOM.renderToString(html(req, result)));
+    const responseData = response.data;
+    res.send(ReactDOM.renderToString(html(req, responseData.item)));
 })
 
-
+//other routes handled by react-router staticRouter
 app.get('*', async (req, res) => {
     res.send(ReactDOM.renderToString(html(req, [])));
 })
