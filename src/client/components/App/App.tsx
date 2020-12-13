@@ -1,4 +1,4 @@
-import React, {/*useEffect,  useState*/} from 'react'
+import React, {/*useEffect,*/  useState} from 'react'
 import { Route, Switch /*, NavLink*/ } from 'react-router-dom';
 import Results from '../Results/Results'
 import Detail from '../Detail/Detail'
@@ -9,7 +9,7 @@ import style from './App.scss'
 
 const App = (props:any) => {
   //const [searchText, changeSearchText] = useState('')
-  //const [results] = useState(props.fetchResult.results)
+  const [results] = useState(props.fetchResult.results)
 
   /*const handleKeyDown = (event:any) => {
     if (event.key === 'Enter') {
@@ -32,25 +32,11 @@ const App = (props:any) => {
   return (
     <div className={style.container}>
       <SearchBar onEnter={() => console.log("manu")}/>
-      {/*<button onClick={() => toggle(!show)}>toggle</button>
-      {show && <h1> Hola Mundo! </h1>}
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/results">Results</NavLink>
-        </li>
-        <li>
-          <NavLink to="/detail">Detail</NavLink>
-        </li>
-      </ul>
-      */}
       <div className={style.routeContainer}>
         <Switch>
           <Route exact path="/" component={() => <div>Home</div>}/> 
-          <Route path="/items" component={() => <Results items={props.fetchResult.results}/>} />
-          <Route path="/detail" component={() => <Detail detalle={'Manu'}/>} />
+          <Route exact path="/items" component={() => <Results items={results}/>} />
+          <Route exact path="/items/:id" component={() => <Detail detalle={'Manu'}/>} />
           <Route component={() => <div>Not found</div>} />
         </Switch>            
       </div>

@@ -1,6 +1,19 @@
 
 export const routeQuerySwitch = (req) => {
+    console.log('req.url', req.url)
+    console.log('req.params', req.params)
+    console.log('req.query', req.query)
+    console.log('req.path', req.path)
+    console.log('req.base', req.base)
     console.log(req.url, /results\?search=/.test(req.url))
+
+    if (req.path === '/items' || req.path === '/items/' && req.query.search) {
+        return '/items?q=' + req.query.search
+    }
+    if (req.path === '/items/') {
+        
+    }
+
     switch (true) {
         case /items\?search=/.test(req.url):
             console.log('/api/items?q=' + req.query.search)
@@ -57,7 +70,6 @@ export const formatResults = (response) => {
         if (response.results && response.results.length > 0) {
             const resultsLengthIndex = response.results.length > 4 ? 4 : response.results.length - 1
             searchResults = response.results.slice(0, resultsLengthIndex).map(item => {
-                console.log(item.title)
                 return getItemData(item)              
             });
         }

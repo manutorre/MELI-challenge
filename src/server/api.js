@@ -5,10 +5,8 @@ export default function(app){
     //search for items
     app.get('/api/items', async (req, res) => {
         try {
-            console.log('param', req.query.q)
             axios.get('https://api.mercadolibre.com/sites/MLA/search?q=' + req.query.q, {timeout: 5000})
             .then(result => {
-                console.log(result)
                 const formattedResults = formatResults(result.data);
                 res.send(formattedResults)
             })
