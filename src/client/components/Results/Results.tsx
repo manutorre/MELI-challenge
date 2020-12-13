@@ -1,4 +1,5 @@
 import React/*, {useEffect, useState}*/ from 'react';
+import ItemCard from './ItemCard';
 //import axios from 'axios';
 
 const Results = (props:any) => {
@@ -14,8 +15,8 @@ const Results = (props:any) => {
     return(
         <div>
             <ul>
-                {props.items ? props.items.map((result:any, index:any) => {
-                    return <li key={index}>{result.title}</li>
+                {props.items ? props.items.map((result:any) => {
+                    return <ItemCard item={result}/>
                 }) : <div>No results</div>}
             </ul>
         </div>
