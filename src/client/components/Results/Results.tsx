@@ -1,5 +1,6 @@
 import React/*, {useEffect, useState}*/ from 'react';
-import ItemCard from './ItemCard';
+import ItemCard from './ItemCard/ItemCard';
+import style from './Results.scss'
 //import axios from 'axios';
 
 const Results = (props:any) => {
@@ -13,12 +14,12 @@ const Results = (props:any) => {
         , []})*/
 
     return(
-        <div>
-            <ul>
-                {props.items ? props.items.map((result:any) => {
-                    return <ItemCard item={result}/>
+        <div className={style.container}>
+            <div>
+                {props.items ? props.items.map((result:any, key:number) => {
+                    return <ItemCard key={key} item={result}/>
                 }) : <div>No results</div>}
-            </ul>
+            </div>
         </div>
     )
 }

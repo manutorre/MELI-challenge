@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Detail.scss'
 
 const Detail = ( props: { detalle: string}) => {
-    console.log("manu")
     return(
         <div className={styles.container}>
             <h1>

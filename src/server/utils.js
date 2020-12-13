@@ -1,32 +1,4 @@
 
-export const routeQuerySwitch = (req) => {
-    console.log('req.url', req.url)
-    console.log('req.params', req.params)
-    console.log('req.query', req.query)
-    console.log('req.path', req.path)
-    console.log('req.base', req.base)
-    console.log(req.url, /results\?search=/.test(req.url))
-
-    if (req.path === '/items' || req.path === '/items/' && req.query.search) {
-        return '/items?q=' + req.query.search
-    }
-    if (req.path === '/items/') {
-        
-    }
-
-    switch (true) {
-        case /items\?search=/.test(req.url):
-            console.log('/api/items?q=' + req.query.search)
-            return '/api/items?q=' + req.query.search
-            break;
-        case /items/.test(req.url):
-            return '/api/item/' + req.params.id
-            break;
-        default:
-            break;
-    }
-}
-
 const authorCreator = () => {
     return {
         name: 'Manuel',
@@ -40,7 +12,7 @@ const getItemData = (item) => {
         title: item.title,
         price:{
             currency: item.currency_id,
-            amount: Math.floor(item.price),
+            amount: item.price,
             decimal: ((item.price % 1) + '').split('.')[1] ? ((item.price % 1) + '').split('.')[1] : 0
         },
         picture: item.pictures ? item.pictures[0].url : item.thumbnail,

@@ -1,4 +1,27 @@
 .container {
-    height: 160px;
-    width: 80%;
+    height: 200px;
+    width: 100%;
+    background-color: white;
+    margin: 0 auto;
+    border-bottom: 1px #EEEEEE solid;
+}
+
+.image {
+    height: 180px;
+    width: 180px;
+    border-radius: 4px;
+    padding: 16px;  
+}
+
+.details {
+    display:inline-block;
+    vertical-align: top;
+    margin-top:48px;
+}
+
+.location {
+    vertical-align: top;
+    display: inline-block;
+    margin: 135px 120px 0 0;
+    float: right;
 }

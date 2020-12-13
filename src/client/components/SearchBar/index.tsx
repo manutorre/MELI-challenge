@@ -3,10 +3,15 @@ import style from './styles.scss';
 import SearchInput from './SearchInput';
 
 const SearchBar = (props:any) => {
+    
+    const goHome = () => {
+        window.location.replace('/')
+    }
+
     return(
         <div className={style.topBar}>
             <div className={style.searchBarContainer}>
-                <div>Logo</div>
+                <img onClick={goHome} className={style.image} src="/static/logo.png"></img>
                 <SearchInput onEnter={props.onEnter}/>
             </div>
         </div>

@@ -14,7 +14,9 @@ var cors = require('cors')
 //get assets for JS hydate and CSS
 app.use(cors())
 app.use('/static', express.static('dist'))
+app.use('/static', express.static(path.join('public', 'assets')))
 app.use('/static', express.static(path.join('server-build', 'css')))
+
 api(app);
 
 const html = (req, result) => 
@@ -54,9 +56,7 @@ app.get('/items/:id', async (req, res) => {
 
 
 app.get('*', async (req, res) => {
-    const response = await axios('http://localhost:3000/api/items?q=' + req.query.search);
-    const result = response.data;
-    res.send(ReactDOM.renderToString(html(req, result)));
+    res.send(ReactDOM.renderToString(html(req, [])));
 })
 
 
