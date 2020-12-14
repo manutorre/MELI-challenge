@@ -132,7 +132,7 @@ var App = function (props) {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _App_scss__WEBPACK_IMPORTED_MODULE_5__["default"].routeContainer },
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null); } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Results_Results__WEBPACK_IMPORTED_MODULE_2__["default"], { items: apiData.results }); } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Results_Results__WEBPACK_IMPORTED_MODULE_2__["default"], { items: apiData.results, pathFromRoot: apiData.pathFromRoot }); } }),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items/:id", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Detail_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], { detail: apiData.item, path: apiData.path_from_root }); } }),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Not found"); } })))));
 };
@@ -266,7 +266,7 @@ var Info = function (props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["default"] = ({"container":"g29KinbkoQ7VBKOY1dy5z","image":"_16h-cRfjrS3jwkBfySw91u","details":"_2dpT0IO6tx6PGZDNuSK4b_","location":"V-MhpvXjUhk7HrwB9oHMA"});
+/* harmony default export */ __webpack_exports__["default"] = ({"container":"g29KinbkoQ7VBKOY1dy5z","container-fluid":"_2IZngBWefFJ9vjS9dtstHe","image":"_16h-cRfjrS3jwkBfySw91u","details":"_2dpT0IO6tx6PGZDNuSK4b_","location":"V-MhpvXjUhk7HrwB9oHMA"});
 
 /***/ }),
 
@@ -282,20 +282,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemCard.scss */ "./src/client/components/Results/ItemCard/ItemCard.scss");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var redirectToItem = function (id) {
-    window.location.replace('/items/' + id);
+    window.location.href = ('/items/' + id);
+};
+var formatAmount = function (amount, decimal) {
+    var integerPart = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    var decimalFormatted = decimal.toString().length > 2 ? decimal.toString().slice(0, 2) : decimal.toString();
+    var decimalPart = decimalFormatted !== "0" ? (',' + decimalFormatted) : '';
+    return integerPart + decimalPart;
 };
 var Item = function (props) {
-    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { onClick: function () { return redirectToItem(props.item.id); }, className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].image, src: props.item.picture }),
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].details },
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null,
-                "$ ",
-                props.item.price.amount),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, props.item.title)),
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].location }, "Capital federal")));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], { fluid: true, className: "p-0" },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { onClick: function () { return redirectToItem(props.item.id); }, className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { md: "2" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].image, src: props.item.picture })),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { md: "8" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].details },
+                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null,
+                            "$ ",
+                            formatAmount(props.item.price.amount, props.item.price.decimal)),
+                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, props.item.title))),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { md: "2" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].location }, "Capital federal"))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Item);
 
@@ -329,23 +343,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ItemCard_ItemCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemCard/ItemCard */ "./src/client/components/Results/ItemCard/ItemCard.tsx");
 /* harmony import */ var _Results_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Results.scss */ "./src/client/components/Results/Results.scss");
+/* harmony import */ var _BreadCrumb_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BreadCrumb/BreadCrumb */ "./src/client/components/BreadCrumb/BreadCrumb.tsx");
 
 
 
-//import axios from 'axios';
+
 var Results = function (props) {
-    //const [results, setResults] = useState([])
-    /*useEffect(() => {
-            axios.get("http://localhost:3000/api/items?q=etios").then(
-                res => {
-                    setResults(res.data.results)º
-                }
-            )
-        , []})*/
-    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Results_scss__WEBPACK_IMPORTED_MODULE_2__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.items ? props.items.map(function (result, key) {
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemCard_ItemCard__WEBPACK_IMPORTED_MODULE_1__["default"], { key: key, item: result });
-        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No results"))));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BreadCrumb_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__["default"], { path: props.pathFromRoot }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Results_scss__WEBPACK_IMPORTED_MODULE_2__["default"].container },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.items ? props.items.map(function (result, key) {
+                return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemCard_ItemCard__WEBPACK_IMPORTED_MODULE_1__["default"], { key: key, item: result });
+            }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No results")))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Results);
 
@@ -370,7 +379,7 @@ __webpack_require__.r(__webpack_exports__);
 var SearchInput = function SearchInput(onEnter) {
   var handleInput = function handleInput(event) {
     if (event.key === 'Enter') {
-      window.location.replace('/items?search=' + event.target.value);
+      window.location.href = '/items?search=' + event.target.value;
     }
   };
 
@@ -418,7 +427,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var SearchBar = function (props) {
     var goHome = function () {
-        window.location.replace('/');
+        window.location.href = '/';
     };
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _styles_scss__WEBPACK_IMPORTED_MODULE_1__["default"].topBar },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _styles_scss__WEBPACK_IMPORTED_MODULE_1__["default"].searchBarContainer },
@@ -616,7 +625,7 @@ var html = function html(req, apiResponse) {
 
 app.get('/items', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-    var response, responseData;
+    var response, responseData, pathFromRoot;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -627,12 +636,17 @@ app.get('/items', /*#__PURE__*/function () {
           case 2:
             response = _context.sent;
             responseData = response.data;
+            _context.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_7___default()('http://localhost:3000/api/path_from_root/' + responseData.category);
+
+          case 6:
+            pathFromRoot = _context.sent;
             res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, {
               results: responseData.results,
-              categories: responseData.categories
+              pathFromRoot: pathFromRoot.data
             })));
 
-          case 5:
+          case 8:
           case "end":
             return _context.stop();
         }
@@ -759,6 +773,20 @@ var formatItem = function formatItem(item) {
     return error;
   }
 };
+
+var mostOccurrences = function mostOccurrences(categories) {
+  try {
+    var map = categories.map(function (a) {
+      return categories.filter(function (b) {
+        return a === b;
+      }).length;
+    });
+    return categories[map.indexOf(Math.max.apply(null, map))];
+  } catch (error) {
+    return error;
+  }
+};
+
 var formatResults = function formatResults(response) {
   try {
     var searchInfo = {
@@ -775,11 +803,11 @@ var formatResults = function formatResults(response) {
       });
     }
 
-    console.log(categories);
+    var breadCrumbCategory = mostOccurrences(categories);
     return _objectSpread(_objectSpread(_objectSpread({}, searchInfo), {
       results: searchResults
     }), {
-      categories: categories
+      category: breadCrumbCategory
     });
   } catch (error) {
     return error;

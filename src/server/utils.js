@@ -34,6 +34,19 @@ export const formatItem = (item) => {
     }
 }
 
+const mostOccurrences = (categories) => {
+    try {
+        var map = categories.map(function(a) {
+            return categories.filter(function(b) {
+                return a === b;
+            }).length;
+        });
+    return categories[map.indexOf(Math.max.apply(null, map))];
+    } catch(error){
+        return error
+    }
+}
+
 export const formatResults = (response) => {
     try {
         const searchInfo = {
@@ -48,8 +61,8 @@ export const formatResults = (response) => {
                 return getItemData(item)              
             });
         }
-        console.log(categories)
-        return {...searchInfo, ...{results: searchResults}, ...{categories: categories}}
+        let breadCrumbCategory = mostOccurrences(categories)
+        return {...searchInfo, ...{results: searchResults}, ...{category: breadCrumbCategory}}
     }
     catch(error){
         return error

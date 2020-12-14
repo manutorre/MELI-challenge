@@ -50,7 +50,8 @@ const html = (req, apiResponse) =>
 app.get('/items', async (req, res) => {
     const response = await axios('http://localhost:3000/api/items?q=' + req.query.search);
     const responseData = response.data;
-    res.send(ReactDOM.renderToString(html(req, {results: responseData.results, categories: responseData.categories})));
+    const pathFromRoot = await axios('http://localhost:3000/api/path_from_root/' + responseData.category);
+    res.send(ReactDOM.renderToString(html(req, {results: responseData.results, pathFromRoot: pathFromRoot.data})));
 })
 
 

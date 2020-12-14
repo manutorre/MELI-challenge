@@ -12,7 +12,6 @@ module.exports = {
     // load non-javascript files with extensions, presumably via loaders
     whitelist: [/\.css$/i],
   })],
-
   output: {
     path: path.resolve('server-build'),
     filename: 'index.js'
@@ -34,7 +33,6 @@ module.exports = {
               modules: true
             }
           },
-          'postcss-loader',
           'sass-loader',
         ]
       },      
@@ -49,7 +47,6 @@ module.exports = {
               modules: true
             }
           },
-          'postcss-loader',
           'sass-loader',
         ],
       },

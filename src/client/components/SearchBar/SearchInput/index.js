@@ -5,7 +5,7 @@ const SearchInput = (onEnter) => {
 
     const handleInput = (event) => {
         if (event.key === 'Enter') {
-            window.location.replace('/items?search=' + event.target.value)
+            window.location.href = '/items?search=' + event.target.value
         }
     }
 

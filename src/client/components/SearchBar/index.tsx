@@ -5,7 +5,7 @@ import SearchInput from './SearchInput';
 const SearchBar = (props:any) => {
     
     const goHome = () => {
-        window.location.replace('/')
+        window.location.href = '/'
     }
 
     return(
