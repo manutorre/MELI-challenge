@@ -8,7 +8,10 @@ module.exports = {
 
   target: 'node',
   devtool: 'sourcemap',
-  externals: [nodeExternals()],
+  externals: [nodeExternals({
+    // load non-javascript files with extensions, presumably via loaders
+    whitelist: [/\.css$/i],
+  })],
 
   output: {
     path: path.resolve('server-build'),
@@ -20,6 +23,21 @@ module.exports = {
         test: /\.js$/,
         use: 'babel-loader'
       },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          },
+          'postcss-loader',
+          'sass-loader',
+        ]
+      },      
       {
         test: /\.scss$/i,
         use: [

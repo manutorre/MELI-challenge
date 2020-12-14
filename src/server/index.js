@@ -22,10 +22,16 @@ api(app);
 const html = (req, apiResponse) => 
       <html>
           <head>
-              <meta charSet="UTF-8"/>
-              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-              <title>React</title>
-              <link rel="stylesheet" href="/static/main.css"/>
+            <meta charSet="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>React</title>
+            <link rel="stylesheet" href="/static/main.css"/>
+            <link
+                rel="stylesheet"
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                crossOrigin="anonymous"
+            />              
           </head>            
           <body>
               <div id="app">
@@ -44,14 +50,15 @@ const html = (req, apiResponse) =>
 app.get('/items', async (req, res) => {
     const response = await axios('http://localhost:3000/api/items?q=' + req.query.search);
     const responseData = response.data;
-    res.send(ReactDOM.renderToString(html(req, responseData.results)));
+    res.send(ReactDOM.renderToString(html(req, {results: responseData.results, categories: responseData.categories})));
 })
 
 
 app.get('/items/:id', async (req, res) => {
     const response = await axios('http://localhost:3000/api/items/' + req.params.id);
     const responseData = response.data;
-    res.send(ReactDOM.renderToString(html(req, responseData.item)));
+    const pathFromRoot = await axios('http://localhost:3000/api/path_from_root/' + responseData.item.category);
+    res.send(ReactDOM.renderToString(html(req, {item: responseData.item, path_from_root: pathFromRoot.data})));
 })
 
 //other routes handled by react-router staticRouter

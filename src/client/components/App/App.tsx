@@ -15,8 +15,8 @@ const App = (props:any) => {
       <div className={style.routeContainer}>
         <Switch>  
           <Route exact path="/" component={() => <div></div>}/> 
-          <Route exact path="/items" component={() => <Results items={apiData}/>} />
-          <Route exact path="/items/:id" component={() => <Detail detail={apiData}/>} />
+          <Route exact path="/items" component={() => <Results items={apiData.results}/>} />
+          <Route exact path="/items/:id" component={() => <Detail detail={apiData.item} path={apiData.path_from_root}/>} />
           <Route component={() => <div>Not found</div>} />
         </Switch>
       </div>

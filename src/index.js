@@ -7,5 +7,5 @@ var renderOrHydrate = document.getElementById('app').hasChildNodes() ? ReactDOM.
 
 renderOrHydrate(
     <BrowserRouter>
-        <App fetchResult={window.__data__}/>
+        <App apiResponse={window.__data__}/>
     </BrowserRouter>, document.getElementById("app"));

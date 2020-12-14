@@ -4,6 +4,7 @@
   background-color: white;
   margin: 0 auto;
   border-bottom: 1px #EEEEEE solid;
+  cursor: pointer;
 }
 
 ._16h-cRfjrS3jwkBfySw91u {
@@ -41,10 +42,9 @@
   margin: 0 auto;
 }
 ._1pde6mqdRez3K8ONdmmK2R {
-  width: 80%;
   background-color: white;
-  margin: 0 auto;
-  padding: 32px 0 0 32px;
+  padding-top: 32px;
+  max-width: 70% !important;
 }
 
 ._1QeLM4LLT9iP_Cgdk9lVSy {
@@ -62,12 +62,54 @@
 ._1QeLM4LLT9iP_Cgdk9lVSy h1 {
   font-size: 46px;
 }
+
+._1MUVV83xWB6pC2tPffFirM {
+  width: 100%;
+}
+
+._3sMEsj4o1h7LevAlsYpuDl {
+  margin-top: 100px;
+  margin-left: 32px;
+  margin-bottom: 32px;
+}
+._3sMEsj4o1h7LevAlsYpuDl h2 {
+  margin-bottom: 32px;
+}
+
+._1JMekWBAevEQSmKJd3JjlS {
+  width: 680px;
+}
+
+._3JM_i6koqWHCpKrjGlbxGC {
+  margin-top: 16px;
+  margin-bottom: 32px;
+  padding-right: 15%;
+}
+
+._2ECn6aYsQPmj7dAZNn4j8K {
+  margin-bottom: 32px;
+}
+
+._1RrQi3uTFv8kWPpYPizkQ0 {
+  padding-right: 32px !important;
+}
+
+._3VAyliKKSO0-QwXqhxRAzh {
+  padding-left: 8%;
+}
+._3qLS_oADnfvMbfO9U-4gTA {
+  display: inline-block;
+  margin-left: 15%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
 ._2l-vrF9te8WePkvFkv-jGN {
   background-color: #FFE600;
   width: 100%;
   height: 70px;
   position: fixed;
   top: 0px;
+  z-index: 1;
 }
 
 ._2kL9xG4R2p6aBYR5D3qT1c {
@@ -98,8 +140,7 @@
 }
 body {
   margin: 0px;
-  background-color: #EEEEEE;
-  font-family: -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  background-color: #EEEEEE !important;
   font-style: normal;
   font-weight: 100;
 }

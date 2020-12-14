@@ -132,11 +132,50 @@ var App = function (props) {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _App_scss__WEBPACK_IMPORTED_MODULE_5__["default"].routeContainer },
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null); } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Results_Results__WEBPACK_IMPORTED_MODULE_2__["default"], { items: apiData }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items/:id", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Detail_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], { detail: apiData }); } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Results_Results__WEBPACK_IMPORTED_MODULE_2__["default"], { items: apiData.results }); } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/items/:id", component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Detail_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], { detail: apiData.item, path: apiData.path_from_root }); } }),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { component: function () { return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Not found"); } })))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+
+/***/ }),
+
+/***/ "./src/client/components/BreadCrumb/BreadCrumb.scss":
+/*!**********************************************************!*\
+  !*** ./src/client/components/BreadCrumb/BreadCrumb.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["default"] = ({"container":"_3qLS_oADnfvMbfO9U-4gTA"});
+
+/***/ }),
+
+/***/ "./src/client/components/BreadCrumb/BreadCrumb.tsx":
+/*!*********************************************************!*\
+  !*** ./src/client/components/BreadCrumb/BreadCrumb.tsx ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BreadCrumb_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BreadCrumb.scss */ "./src/client/components/BreadCrumb/BreadCrumb.scss");
+
+
+var BreadCrumb = function (props) {
+    var path = props.path;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _BreadCrumb_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container }, path.map(function (step, index) {
+        return step.name + (index < path.length - 1 ? ' > ' : '');
+    })));
+};
+/* harmony default export */ __webpack_exports__["default"] = (BreadCrumb);
 
 
 /***/ }),
@@ -151,7 +190,7 @@ var App = function (props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["default"] = ({"container":"_1pde6mqdRez3K8ONdmmK2R","info":"_1QeLM4LLT9iP_Cgdk9lVSy","detailInfo":"_1GxVz_yJ1zDWvpKg-vmKJd"});
+/* harmony default export */ __webpack_exports__["default"] = ({"container":"_1pde6mqdRez3K8ONdmmK2R","info":"_1QeLM4LLT9iP_Cgdk9lVSy","detailInfo":"_1GxVz_yJ1zDWvpKg-vmKJd","button":"_1MUVV83xWB6pC2tPffFirM","description":"_3sMEsj4o1h7LevAlsYpuDl","productImage":"_1JMekWBAevEQSmKJd3JjlS","title":"_3JM_i6koqWHCpKrjGlbxGC","amount":"_2ECn6aYsQPmj7dAZNn4j8K","productDetails":"_1RrQi3uTFv8kWPpYPizkQ0","details":"_3VAyliKKSO0-QwXqhxRAzh"});
 
 /***/ }),
 
@@ -167,32 +206,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Detail_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Detail.scss */ "./src/client/components/Detail/Detail.scss");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _BreadCrumb_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BreadCrumb/BreadCrumb */ "./src/client/components/BreadCrumb/BreadCrumb.tsx");
 
 
+
+
+var formatAmount = function (amount, decimal) {
+    var integerPart = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    var decimalFormatted = decimal.toString().length > 2 ? decimal.toString().slice(0, 2) : decimal.toString();
+    var decimalPart = decimalFormatted !== "0" ? (',' + decimalFormatted) : '';
+    return integerPart + decimalPart;
+};
 var Detail = function (props) {
-    var detail = props.detail;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Info, { detail: detail }),
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].description },
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Descripci\u00F3n del producto"),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail.description))));
+    var detail = props.detail, path = props.path;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BreadCrumb_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__["default"], { path: path }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].details },
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Info, { detail: detail })),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { xl: "8", className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].description },
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Descripci\u00F3n del producto"),
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail.description))))));
 };
 var Info = function (props) {
     var detail = props.detail;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].info },
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", { src: detail.picture }),
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].detailInfo },
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, detail.condition === 'new' ? 'nuevo' : 'usado'),
-                " - ",
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null,
-                    detail.sold_quantity,
-                    " vendidos")),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, detail.title),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null,
-                "$ ",
-                detail.price.amount),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Comprar"))));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { xl: "6" },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].productImage, src: detail.picture })),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { xl: "2" }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], { xl: "4", className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].productDetails },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null,
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, detail.condition === 'new' ? 'nuevo' : 'usado'),
+                    " - ",
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null,
+                        detail.sold_quantity,
+                        " vendidos")),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title }, detail.title),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", { className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].amount },
+                    "$ ",
+                    formatAmount(detail.price.amount, detail.price.decimal)),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], { size: "lg", className: _Detail_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button, variant: "primary" }, "Comprar")))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Detail);
 
@@ -227,8 +284,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemCard.scss */ "./src/client/components/Results/ItemCard/ItemCard.scss");
 
 
+var redirectToItem = function (id) {
+    window.location.replace('/items/' + id);
+};
 var Item = function (props) {
-    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { onClick: function () { return redirectToItem(props.item.id); }, className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].image, src: props.item.picture }),
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: _ItemCard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].details },
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null,
@@ -534,6 +594,11 @@ var html = function html(req, apiResponse) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("title", null, "React"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
     rel: "stylesheet",
     href: "/static/main.css"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
+    rel: "stylesheet",
+    href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+    integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
+    crossOrigin: "anonymous"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("body", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     id: "app"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["StaticRouter"], {
@@ -562,7 +627,10 @@ app.get('/items', /*#__PURE__*/function () {
           case 2:
             response = _context.sent;
             responseData = response.data;
-            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, responseData.results)));
+            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, {
+              results: responseData.results,
+              categories: responseData.categories
+            })));
 
           case 5:
           case "end":
@@ -578,7 +646,7 @@ app.get('/items', /*#__PURE__*/function () {
 }());
 app.get('/items/:id', /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
-    var response, responseData;
+    var response, responseData, pathFromRoot;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -589,9 +657,17 @@ app.get('/items/:id', /*#__PURE__*/function () {
           case 2:
             response = _context2.sent;
             responseData = response.data;
-            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, responseData.item)));
+            _context2.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_7___default()('http://localhost:3000/api/path_from_root/' + responseData.item.category);
 
-          case 5:
+          case 6:
+            pathFromRoot = _context2.sent;
+            res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_2___default.a.renderToString(html(req, {
+              item: responseData.item,
+              path_from_root: pathFromRoot.data
+            })));
+
+          case 8:
           case "end":
             return _context2.stop();
         }
@@ -660,12 +736,13 @@ var getItemData = function getItemData(item) {
     title: item.title,
     price: {
       currency: item.currency_id,
-      amount: item.price,
-      decimal: (item.price % 1 + '').split('.')[1] ? (item.price % 1 + '').split('.')[1] : 0
+      amount: Math.trunc(item.price),
+      decimal: parseInt((item.price % 1 + '').split('.')[1] ? (item.price % 1 + '').split('.')[1] : 0)
     },
     picture: item.pictures ? item.pictures[0].url : item.thumbnail,
     condition: item.condition,
-    free_shipping: item.shipping.free_shipping
+    free_shipping: item.shipping.free_shipping,
+    category: item.category_id
   };
 };
 
@@ -688,16 +765,21 @@ var formatResults = function formatResults(response) {
       author: authorCreator()
     };
     var searchResults = [];
+    var categories = [];
 
     if (response.results && response.results.length > 0) {
       var resultsLengthIndex = response.results.length > 4 ? 4 : response.results.length - 1;
       searchResults = response.results.slice(0, resultsLengthIndex).map(function (item) {
+        categories.push(item.category_id);
         return getItemData(item);
       });
     }
 
-    return _objectSpread(_objectSpread({}, searchInfo), {
+    console.log(categories);
+    return _objectSpread(_objectSpread(_objectSpread({}, searchInfo), {
       results: searchResults
+    }), {
+      categories: categories
     });
   } catch (error) {
     return error;
@@ -782,6 +864,17 @@ module.exports = require("path");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-bootstrap":
+/*!**********************************!*\
+  !*** external "react-bootstrap" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap");
 
 /***/ }),
 

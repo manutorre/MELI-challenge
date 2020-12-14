@@ -1,9 +1,13 @@
 import React from 'react';
 import style from './ItemCard.scss'
 
+const redirectToItem = (id:string) => {
+    window.location.replace('/items/' + id)
+}
+
 const Item = (props:any) => {
     return(
-        <div className={style.container}>
+        <div onClick={() => redirectToItem(props.item.id)} className={style.container}>
             <img className={style.image} src={props.item.picture}></img>
             <div className={style.details}>
                 <h1>$ {props.item.price.amount}</h1>
