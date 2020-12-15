@@ -1,0 +1,32 @@
+$brandWhite: #EEEEEE;
+
+.searchInputContainer {
+    width:65%;
+    position: relative;
+}
+
+.searchInput {
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    height:50px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.searchButtonContainer {
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    top: 0px;
+    right:0px;
+    background-color: $brandWhite;
+    cursor:pointer;
+}
+
+.searchButton {
+    width:25px;
+    margin:15px;
+}

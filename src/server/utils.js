@@ -7,18 +7,23 @@ const authorCreator = () => {
 }
 
 const getItemData = (item) => {
-    return {
-        id: item.id,
-        title: item.title,
-        price:{
-            currency: item.currency_id,
-            amount: Math.trunc(item.price),
-            decimal: parseInt(((item.price % 1) + '').split('.')[1] ? ((item.price % 1) + '').split('.')[1] : 0)
-        },
-        picture: item.pictures ? item.pictures[0].url : item.thumbnail,
-        condition: item.condition,
-        free_shipping: item.shipping.free_shipping,
-        category: item.category_id
+    try {
+        return {
+            id: item.id,
+            title: item.title,
+            price:{
+                currency: item.currency_id,
+                amount: Math.trunc(item.price),
+                decimal: parseInt(((item.price % 1) + '').split('.')[1] ? ((item.price % 1) + '').split('.')[1] : 0)
+            },
+            picture: item.pictures ? item.pictures[0].url : item.thumbnail,
+            condition: item.condition,
+            free_shipping: item.shipping.free_shipping,
+            category: item.category_id,
+            location: item.address ? item.address.city_name : item.seller_address.city.name
+        }
+    } catch(error) {
+        return error;
     }
 }
 

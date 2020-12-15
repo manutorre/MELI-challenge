@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './styles.scss';
-import SearchInput from './SearchInput';
+import style from './Searchbar.scss';
+import SearchInput from './SearchInput/SearchInput';
 
 const SearchBar = (props:any) => {
     

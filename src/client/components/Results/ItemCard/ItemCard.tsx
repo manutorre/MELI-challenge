@@ -19,7 +19,7 @@ const Item = (props:any) => {
             <div onClick={() => redirectToItem(props.item.id)} className={style.container}>
                 <Row>
                     <Col md="2">
-                        <img className={style.image} src={props.item.picture}></img>
+                        {props.item.picture && <img className={style.image} src={props.item.picture}></img>}
                     </Col>
                     <Col md="8">
                         <div className={style.details}>
@@ -28,7 +28,7 @@ const Item = (props:any) => {
                         </div>
                     </Col>
                     <Col md="2">
-                        <span className={style.location}>Capital federal</span>
+                        <span className={style.location}>{props.item.location}</span>
                     </Col>
                 </Row>
             </div>

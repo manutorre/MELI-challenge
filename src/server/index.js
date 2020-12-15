@@ -48,18 +48,27 @@ const html = (req, apiResponse) =>
       </html>
 
 app.get('/items', async (req, res) => {
-    const response = await axios('http://localhost:3000/api/items?q=' + req.query.search);
-    const responseData = response.data;
-    const pathFromRoot = await axios('http://localhost:3000/api/path_from_root/' + responseData.category);
-    res.send(ReactDOM.renderToString(html(req, {results: responseData.results, pathFromRoot: pathFromRoot.data})));
+    try {
+        const response = await axios('http://localhost:3000/api/items?q=' + req.query.search);
+        const responseData = response.data;
+        const pathFromRoot = await axios('http://localhost:3000/api/path_from_root/' + responseData.category);
+        res.send(ReactDOM.renderToString(html(req, {results: responseData.results, pathFromRoot: pathFromRoot.data})));
+    }
+    catch(error){
+        return error
+    }
 })
 
 
 app.get('/items/:id', async (req, res) => {
-    const response = await axios('http://localhost:3000/api/items/' + req.params.id);
-    const responseData = response.data;
-    const pathFromRoot = await axios('http://localhost:3000/api/path_from_root/' + responseData.item.category);
-    res.send(ReactDOM.renderToString(html(req, {item: responseData.item, path_from_root: pathFromRoot.data})));
+    try {
+        const response = await axios('http://localhost:3000/api/items/' + req.params.id);
+        const responseData = response.data;
+        const pathFromRoot = await axios('http://localhost:3000/api/path_from_root/' + responseData.item.category);
+        res.send(ReactDOM.renderToString(html(req, {item: responseData.item, path_from_root: pathFromRoot.data})));
+    } catch(error){
+        return error
+    }
 })
 
 //other routes handled by react-router staticRouter

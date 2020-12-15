@@ -3,7 +3,7 @@ import { Route, Switch /*, NavLink*/ } from 'react-router-dom';
 import Results from '../Results/Results'
 import Detail from '../Detail/Detail'
 //import Home from '../Home/Home';
-import SearchBar from '../SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import style from './App.scss'
 //import axios from 'axios';
 
@@ -16,7 +16,7 @@ const App = (props:any) => {
         <Switch>  
           <Route exact path="/" component={() => <div></div>}/> 
           <Route exact path="/items" component={() => <Results items={apiData.results} pathFromRoot={apiData.pathFromRoot}/>} />
-          <Route exact path="/items/:id" component={() => <Detail detail={apiData.item} path={apiData.path_from_root}/>} />
+          <Route exact path="/items/:id" component={(props:any) => <Detail detail={apiData.item} path={apiData.path_from_root} {...props}/>} />
           <Route component={() => <div>Not found</div>} />
         </Switch>
       </div>
