@@ -5,3 +5,10 @@
     margin: 0 auto;
     margin-top: -16px;
 }
+
+
+@media (max-width: 765px) {
+    .container {
+        width:100%
+    }
+}

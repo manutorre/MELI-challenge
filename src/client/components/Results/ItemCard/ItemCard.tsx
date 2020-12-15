@@ -18,16 +18,14 @@ const Item = (props:any) => {
         <Container fluid className="p-0">
             <div onClick={() => redirectToItem(props.item.id)} className={style.container}>
                 <Row>
-                    <Col md="2">
+                    <Col md="11" xs="12" sm="12">
                         {props.item.picture && <img className={style.image} src={props.item.picture}></img>}
-                    </Col>
-                    <Col md="8">
                         <div className={style.details}>
                             <h1>$ {formatAmount(props.item.price.amount, props.item.price.decimal)}</h1>
                             <h2>{props.item.title}</h2>
                         </div>
                     </Col>
-                    <Col md="2">
+                    <Col md="1" xs="auto" sm="auto">
                         <span className={style.location}>{props.item.location}</span>
                     </Col>
                 </Row>

@@ -55,3 +55,10 @@
 .details {
     padding-left: 8%;
 }
+
+@media (max-width: 765px) {
+    .container {
+        width:100% !important;
+        max-width: 100% !important;
+    }
+}
